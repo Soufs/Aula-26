@@ -10,7 +10,7 @@ var pig1, pig2;
 var log1, log2, log3, log4;
 var bird;
 var backgroundimg, platform;
-var restritoLog;
+var log5;
 
 function preload(){
     backgroundimg = loadImage("sprites/bg.png");
@@ -21,7 +21,7 @@ function setup(){
     engine = Engine.create();
     world = engine.world;
 
-    restritoLog = new Log(230,180,80,PI/2);
+    log5 = new Log(230,180,80,PI/2);
     platform = new Ground(150,305,300,170);
     ground = new Ground(600,height,1200,20)
 
@@ -41,15 +41,8 @@ function setup(){
     log3 = new Log(760,120,150,PI/7);
     log4 = new Log(870,120,150,-PI/7);
 
-    var options = {
-        bodyA: bird.body,
-        bodyB: restritoLog.body,
-        stiffness: 0.04,
-        length: 10
-    }
-
-    var chain = Constraint.create(options);
-    World.add(world, chain);
+    //linha invisivel
+    restriction = new Chain(bird.body, pig2.body);
 }
 
 function draw(){
@@ -75,8 +68,7 @@ function draw(){
     log3.display();
     log4.display();
 
-    restritoLog.display();
+    log5.display();
+    restriction.display();
 
-    strokeWeight(3);
-    line(bird.body.position.x, bird.body.position.y,restritoLog.body.position.x, restritoLog.body.position.y);
 }
