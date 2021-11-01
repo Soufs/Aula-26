@@ -42,7 +42,7 @@ function setup(){
     log4 = new Log(870,120,150,-PI/7);
 
     //linha invisivel
-    restriction = new Chain(bird.body, pig2.body);
+    restriction = new Slingshot(bird.body,{x:250, y:150});
 }
 
 function draw(){
@@ -70,5 +70,12 @@ function draw(){
 
     log5.display();
     restriction.display();
+}
 
+function mouseDragged(){
+    Matter.Body.setPosition(bird.body,{x: mouseX, y: mouseY});
+}
+
+function mouseReleased(){
+    restriction.fly();
 }
