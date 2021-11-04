@@ -21,7 +21,7 @@ function setup(){
     engine = Engine.create();
     world = engine.world;
 
-    log5 = new Log(230,180,80,PI/2);
+    //log5 = new Log(230,180,80,PI/2);
     platform = new Ground(150,305,300,170);
     ground = new Ground(600,height,1200,20)
 
@@ -34,7 +34,7 @@ function setup(){
     pig1 = new Pig(810,350);
     pig2 = new Pig(810,220);
 
-    bird = new Bird(100,100);
+    bird = new Bird(200,50);
 
     log1 = new Log(810,260,300,PI/2);
     log2 = new Log(810,180,300,PI/2);
@@ -42,7 +42,7 @@ function setup(){
     log4 = new Log(870,120,150,-PI/7);
 
     //linha invisivel
-    restriction = new Slingshot(bird.body,{x:250, y:150});
+    restriction = new Slingshot(bird.body,{x:200, y:50});
 }
 
 function draw(){
@@ -68,7 +68,7 @@ function draw(){
     log3.display();
     log4.display();
 
-    log5.display();
+    //log5.display();
     restriction.display();
 }
 
