@@ -4,7 +4,7 @@ class Slingshot{
         var options = {
             bodyA: bodyA,
             pointB: pointB,
-            stiffness: 0.04,
+            stiffness: 0.2,
             length: 10
         }
     
@@ -16,6 +16,10 @@ class Slingshot{
     World.add(world, this.sling);
     }
     
+    attach(body){
+        this.sling.bodyA = body;
+    }
+
     fly(){
         this.sling.bodyA = null;
     }

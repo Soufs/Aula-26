@@ -79,3 +79,9 @@ function mouseDragged(){
 function mouseReleased(){
     restriction.fly();
 }
+
+function keyPressed(){
+    if(keyCode === 32){
+      restriction.attach(bird.body);
+    }
+}
