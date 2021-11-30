@@ -13,6 +13,7 @@ var backgroundimg, platform;
 var log5;
 var estadodeJogo = "onSling";
 var bg = "sprites/bg.png";
+var score = 0;
 
 function preload(){
     getBgimg();
@@ -53,6 +54,10 @@ function draw(){
         background(backgroundimg);
     }
     Engine.update(engine);
+
+    textSize(35);
+    fill("white");
+    text("score: " + score, width - 300, 50);
     
     platform.display();
     ground.display(); 
@@ -63,8 +68,10 @@ function draw(){
     box4.display();
     box5.display();
     
-    //pig1.display();
-    //pig2.display();
+    pig1.display();
+    pig2.display();
+    pig1.score();
+    pig2.score();
 
     bird.display();
 
@@ -75,22 +82,28 @@ function draw(){
 
     //log5.display();
     restriction.display();
+
+    console.log(bird.body.speed);
 }
 
 function mouseDragged(){
-    if(estadodeJogo === "onSling"){
+    //if(estadodeJogo === "onSling"){
     Matter.Body.setPosition(bird.body,{x: mouseX, y: mouseY});
-}}
+}
+//}
 
 function mouseReleased(){
     restriction.fly();
-    estadodeJogo = "no";
+    //estadodeJogo = "no";
 }
 
 function keyPressed(){
-    if(keyCode === 32){
+    if(keyCode === 32 && bird.body.speed < 1){
       restriction.attach(bird.body);
-    estadodeJogo = "onSling";
+      Matter.Body.setPosition(bird.body,{x: 200, y: 50});
+
+      bird.trajetoria = [];
+    //estadodeJogo = "onSling";
 }}
 
 async function getBgimg(){
